@@ -83,6 +83,14 @@ function App() {
         setHideNextQuestion(true)
     }
 
+    function restart() {
+        setHideFinish(true)
+        setHideQ1(false)
+        setUserAnswer("")
+        setCongrats("")
+        setHideNextQuestion(true)
+    }
+
     return(
         <>
         <div className="q1" hidden={hideQ1}>
@@ -120,6 +128,7 @@ function App() {
         <div className="finish" hidden={hideFinish}>
             <h1>Congratulations!</h1>
             <h1>You've completed the Quiz!</h1>
+            <button className="button" id="nextQuestion"></button>
         </div>
         </>
     )
