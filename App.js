@@ -128,7 +128,7 @@ function App() {
         <div className="finish" hidden={hideFinish}>
             <h1>Congratulations!</h1>
             <h1>You've completed the Quiz!</h1>
-            <button className="button" id="nextQuestion"></button>
+            <button className="button" id="nextQuestion" onClick={restart}></button>
         </div>
         </>
     )
