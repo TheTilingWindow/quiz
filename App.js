@@ -4,6 +4,7 @@ function App() {
     const answer2 = "Paris";
     const answer3 = "Javascript";
     const answer4 = "SQL";
+    const answer5 = "15";
 
     const [userAnswer, setUserAnswer] = useState("");
     const [congrats, setCongrats] = useState("");
@@ -12,6 +13,7 @@ function App() {
     const [hideQ2, setHideQ2] = useState(true)
     const [hideQ3, setHideQ3] = useState(true)
     const [hideQ4, setHideQ4] = useState(true)
+    const [hideQ5, setHideQ5] = useState(true)
     const [hideFinish, setHideFinish] = useState(true)
 
 
@@ -51,6 +53,15 @@ function App() {
         }
     } 
 
+    function checkAnswer5() {
+        if (userAnswer.toLowerCase() == answer5.toLowerCase()) {
+            setCongrats("Answer is right!")
+            setHideNextQuestion(false)
+        } else {
+            setCongrats("Answer is wrong")
+        }
+    }
+
     function nextQuestion() {
         setHideQ1(true)
         setHideQ2(false)
@@ -73,6 +84,14 @@ function App() {
         setUserAnswer("")
         setCongrats("")
         setHideNextQuestion(true)
+    }
+
+    function nextQuestion4() {
+        setHideQ4(true)
+        setHideQ5(false)
+        setUserAnswer("")
+        setCongrats("")
+        setHideNextQuestion(false)
     }
 
     function finish() {
@@ -123,6 +142,14 @@ function App() {
             <input type="text" placeholder="Enter your answer here" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="cssinput"></input>
             <p>{congrats}</p>
             <button className="button" onClick={checkAnswer4}>Submit</button>
+            <button className="button" hidden={hideNextQuestion} id="nextQuestion" onClick={nextQuestion4}>Finish</button>
+        </div>
+        <div className="q5" hidden={hideQ5}>
+            <h1>Quiz!</h1>
+            <h1>x + 15 = 30. Find x.</h1>
+            <input type="text" placeholder="Enter your answer here" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="cssinput"></input>
+            <p>{congrats}</p>
+            <button className="button" onClick={checkAnswer5}>Submit</button>
             <button className="button" hidden={hideNextQuestion} id="nextQuestion" onClick={finish}>Finish</button>
         </div>
         <div className="finish" hidden={hideFinish}>
