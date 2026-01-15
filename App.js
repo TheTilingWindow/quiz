@@ -1,6 +1,6 @@
 const { useState } = React;
 function App() {
-    const answer = "366 days";
+    const answer = "366";
     const answer2 = "Paris";
     const answer3 = "Javascript";
     const answer4 = "SQL";
@@ -91,18 +91,18 @@ function App() {
         setHideQ5(false)
         setUserAnswer("")
         setCongrats("")
-        setHideNextQuestion(false)
+        setHideNextQuestion(true)
     }
 
     function finish() {
-        setHideQ4(true)
+        setHideQ5(true)
         setHideFinish(false)
         setUserAnswer("")
         setCongrats("")
         setHideNextQuestion(true)
     }
 
-    function restart() {
+    function restartQuiz() {
         setHideFinish(true)
         setHideQ1(false)
         setUserAnswer("")
@@ -142,12 +142,12 @@ function App() {
             <input type="text" placeholder="Enter your answer here" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="cssinput"></input>
             <p>{congrats}</p>
             <button className="button" onClick={checkAnswer4}>Submit</button>
-            <button className="button" hidden={hideNextQuestion} id="nextQuestion" onClick={nextQuestion4}>Finish</button>
+            <button className="button" hidden={hideNextQuestion} id="nextQuestion" onClick={nextQuestion4}>Next Question</button>
         </div>
         <div className="q5" hidden={hideQ5}>
             <h1>Quiz!</h1>
             <h1>x + 15 = 30. Find x.</h1>
-            <input type="text" placeholder="Enter your answer here" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="cssinput"></input>
+            <input type="text" placeholder="Enter your answer" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="cssinput"></input>
             <p>{congrats}</p>
             <button className="button" onClick={checkAnswer5}>Submit</button>
             <button className="button" hidden={hideNextQuestion} id="nextQuestion" onClick={finish}>Finish</button>
@@ -155,7 +155,7 @@ function App() {
         <div className="finish" hidden={hideFinish}>
             <h1>Congratulations!</h1>
             <h1>You've completed the Quiz!</h1>
-            <button className="button" id="nextQuestion" onClick={restart}>Restart Quiz</button>
+            <button className="button" onClick={restartQuiz}>Restart Quiz</button>
         </div>
         </>
     )
